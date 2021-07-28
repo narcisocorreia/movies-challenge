@@ -43,25 +43,22 @@ const RevenueColumn = styled(InfoText)`
   text-align: left;
 `;
 
-function MovieEntry({ rank, title, year, revenue, id }) {
+function MovieEntry({ rank, title, year, revenue, id, onMovieClick }) {
   //Fetching movie details
   const getMoviesInformation = async (movieID) => {
-    let movieInfo = {};
     await fetch(
       `http://movie-challenge-api-xpand.azurewebsites.net/api/movies/${movieID}`
     )
       .then((res) => res.json())
       .then((data) => {
-        movieInfo = data;
+        onMovieClick(data);
       });
-
-    console.log(movieInfo);
   };
 
   return (
     <Body
       onClick={() => {
-        console.log(getMoviesInformation(id));
+        getMoviesInformation(id);
       }}
     >
       <RankingColumn>{rank}</RankingColumn>

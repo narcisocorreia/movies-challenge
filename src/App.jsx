@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MoviesList from "./components/movies-list";
+import MovieInfoPopUp from "./components/movie-info-popUp";
 
 const Body = styled.div`
   position: absolute;
@@ -26,6 +27,7 @@ const TopBar = styled.div`
 
 function App() {
   const [moviesContainer, setMoviesContainer] = React.useState([]);
+  const [movieInfo, setMovieInfo] = React.useState(null);
 
   //Fetching movies list
   React.useEffect(() => {
@@ -37,10 +39,31 @@ function App() {
       });
   }, []);
 
+  const handleMovieClick = (movieInfo) => {
+    setMovieInfo(movieInfo);
+  };
+
+  const handleCloseButtonClick = () => {
+    setMovieInfo(null);
+  };
+
   return (
     <Body>
       <TopBar />
-      {moviesContainer && <MoviesList moviesList={moviesContainer} />}
+
+      {movieInfo && (
+        <MovieInfoPopUp
+          movieInfo={movieInfo}
+          onCloseButtonClick={handleCloseButtonClick}
+        ></MovieInfoPopUp>
+      )}
+
+      {moviesContainer && (
+        <MoviesList
+          moviesList={moviesContainer}
+          onMovieClick={handleMovieClick}
+        />
+      )}
     </Body>
   );
 }

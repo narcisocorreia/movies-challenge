@@ -11,7 +11,7 @@ const Body = styled.div`
   overflow-x: hidden;
 `;
 
-function List({ moviesList }) {
+function List({ moviesList, onMovieClick }) {
   return (
     <Body>
       {moviesList.map((movie, index) => {
@@ -24,6 +24,7 @@ function List({ moviesList }) {
             revenue={revenue}
             id={id}
             key={index}
+            onMovieClick={onMovieClick}
           />
         );
       })}

@@ -35,3 +35,11 @@ I decided to make it a grid, I thought that would me simple and more structure s
 
 **Reason for my Approach**
 Then I list all the movies that the come in the API request, using the map, returning an object showing the values asked.
+
+## Add Info PopUp Layout [4d03e4d](https://github.com/narcisocorreia/movies-challenge/commit/4d03e4d4c62a272f4dadf1b3e77ebe1b001f2444)
+
+![Movies Info](readME-assets/movie-info-layout.png)
+
+In this commit I created the base layout for popUp with the movie information.
+
+For the popup it self I took the same approach that I used in last commit. I calculate the width and height by divide the popUp size multiplied by 100 by the page size.

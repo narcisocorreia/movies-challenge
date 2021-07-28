@@ -17,11 +17,13 @@ const Body = styled.div`
   gap: 0px 18px;
 `;
 
-function MoviesList({ moviesList }) {
+function MoviesList({ moviesList, onMovieClick }) {
   return (
     <Body>
       <DescriptionBar />
-      {moviesList && <List moviesList={moviesList} />}
+      {moviesList && (
+        <List moviesList={moviesList} onMovieClick={onMovieClick} />
+      )}
     </Body>
   );
 }
