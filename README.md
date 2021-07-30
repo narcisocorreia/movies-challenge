@@ -1,4 +1,4 @@
-# Narciso Daniel Correia [Mark's Movies List Challenge ](https://github.com/narcisocorreia/movies-challenge)
+# Narciso Daniel Correia [Mark's Movies List Challenge](https://github.com/narcisocorreia/movies-challenge)
 
 ## Add get Movie List and Movie detail Request [0d367f8](https://github.com/narcisocorreia/movies-challenge/commit/85e0bc20f9eea7d3c298472fb5f0a9a6dab838fb)
 
@@ -43,3 +43,15 @@ Then I list all the movies that the come in the API request, using the map, retu
 In this commit I created the base layout for popUp with the movie information.
 
 For the popup it self I took the same approach that I used in last commit. I calculate the width and height by divide the popUp size multiplied by 100 by the page size.
+
+## Add filter info options [4a90204](https://github.com/narcisocorreia/movies-challenge/commit/4a902042cf978df10c03d4051b6ea26b137c287d)
+
+In this PR I created the options to filter list of movies by the top most revenue or the Year XXXX top revenue.
+
+To stated I created a simple div to contain all the to contain all the button that filter the movie list.
+
+I created a state to hold the original information received, then when the user selected the option of top revenue or top revenue per year a copy of the original information is created, in the case of the option is the top revenue that new copy is sorted from the objected with with the highest revenue to the lowest. In the case of the top revenue per year, a new copy of the original is created, then I selected all the objects where the year equals the one that was selected, then the objects are sorted from the object to with the highest revenue to the lowest.
+
+To show the list of items that where according to the options that are selected, I created a state that holds that information, and when a option is selected and the new information is created that information is always in that useState. This means that there is only list of movies "object" and the only thing need to be done is to change the value of the state that contains the information that was to be listed.
+
+I also use the same approach for the development of the division that contains the list of year that was use before for the information popUp and the list movies.

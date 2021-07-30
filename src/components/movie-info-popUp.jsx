@@ -22,7 +22,7 @@ const Body = styled.div`
 
   width: 54.8%;
   height: 88.8%;
-  padding-left: 58px;
+  padding: 0px 60px;
 
   background-color: white;
   box-shadow: 0px 20px 40px #01243366;

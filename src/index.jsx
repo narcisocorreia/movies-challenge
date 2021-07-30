@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./assets/fonts/fonts.css";
 
 ReactDOM.render(
   <React.StrictMode>
