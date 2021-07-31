@@ -59,3 +59,7 @@ I also use the same approach for the development of the division that contains t
 ## Create Years List Dynamically [020c574](https://github.com/narcisocorreia/movies-challenge/commit/020c574b7d559cd7095e8eded446ca9ae1b21f96)
 
 In this commit I created an algorithm that filters all the different years that are in the movies container, now when a user selects the option revenue per year all the years it only appears years that there is an actually movie information on the list.
+
+## Create option bar component [6eaab80](https://github.com/narcisocorreia/movies-challenge/commit/6eaab8032c4fa6a9f29d1c339c809bb82f1d5081)
+
+This was a simple refactor to the code, creating the option bar component, with this App.jsx file is easer to read and more organized.

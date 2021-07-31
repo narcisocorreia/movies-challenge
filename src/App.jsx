@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import MoviesList from "./components/movies-list";
 import MovieInfoPopUp from "./components/movie-info-popUp";
+
+import OptionsBar from "./components/option-bar";
 import { ReactComponent as ResetSVG } from "./assets/svg/reset.svg";
 
 const Body = styled.div`
@@ -17,7 +19,7 @@ const Body = styled.div`
   place-items: center;
 `;
 
-const TopBar = styled.div`
+const BlueBar = styled.div`
   top: 0px;
   left: 0px;
 
@@ -26,7 +28,7 @@ const TopBar = styled.div`
   background-color: #012433;
 `;
 
-const SearchBar = styled.div`
+const TopBar = styled.div`
   width: 68.7%;
 
   display: flex;
@@ -39,38 +41,6 @@ const Title = styled.h1`
   font: normal normal normal 24px Roboto;
   letter-spacing: 0px;
   color: #386071;
-`;
-
-const SearchButtons = styled.div`
-  display: flex;
-
-  flex-direction: row;
-  gap: 16px;
-  place-items: center;
-`;
-
-const Button = styled.button`
-  width: auto;
-  height: 30px;
-
-  background: ${(props) =>
-    props.selected
-      ? "#00baff 0% 0% no-repeat padding-box"
-      : "#ffffff 0% 0% no-repeat padding-box"};
-
-  border: 1px solid rgba(120, 132, 158, 0.4);
-  border-radius: 20px;
-  text-align: center;
-  font: normal normal 300 12px Roboto;
-  letter-spacing: 0px;
-  color: #78849e;
-
-  color: ${(props) => (props.selected ? "#012433" : "#78849e")};
-
-  :focus {
-    background: #00baff 0% 0% no-repeat padding-box;
-    color: #012433;
-  }
 `;
 
 const Shadow = styled.div`
@@ -137,14 +107,6 @@ const Years = (yearsContainer, onYearClick, exitYearsList) => {
         })}
       </YearsBG>
     </Shadow>
-  );
-};
-
-const SearchButton = (buttonCopy, buttonFlag, handleButtonClick) => {
-  return (
-    <Button selected={buttonFlag} onClick={handleButtonClick}>
-      {buttonCopy}
-    </Button>
   );
 };
 
@@ -233,20 +195,22 @@ function App() {
 
   return (
     <Body>
-      <TopBar />
-      <SearchBar>
+      <BlueBar />
+      <TopBar>
         <Title>Movie raking</Title>
-        <SearchButtons>
-          {SearchButton("Top 10 Revenue", wasTopRevenue, handleTopRevenueClick)}
-          {SearchButton(
-            "Top 10 Revenue per Year",
-            wasTopRevenuePerYear,
-            handleTopRevenuePerYearClick
-          )}
+        <OptionsBar
+          topRevenueCopy="Top 10 Revenue"
+          topRevenueFlag={wasTopRevenue}
+          onTopRevenueClick={handleTopRevenueClick}
+          topRevenuePerYearCopy="Top 10 Revenue per Year"
+          topRevenuePerYearFlag={wasTopRevenuePerYear}
+          onTopRevenuePerYearClick={handleTopRevenuePerYearClick}
+          resetButton={showResetButton}
+        />
+      </TopBar>
 
-          {showResetButton()}
-        </SearchButtons>
-      </SearchBar>
+      {showYearsList &&
+        Years(yearsList, sortYearsByTopRevenue, handleYearsListExit)}
 
       {movieInfo && (
         <MovieInfoPopUp
@@ -258,9 +222,6 @@ function App() {
       {listedItems && (
         <MoviesList moviesList={listedItems} onMovieClick={handleMovieClick} />
       )}
-
-      {showYearsList &&
-        Years(yearsList, sortYearsByTopRevenue, handleYearsListExit)}
     </Body>
   );
 }
