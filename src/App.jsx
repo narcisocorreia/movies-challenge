@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MoviesList from "./components/movies-list";
 import MovieInfoPopUp from "./components/movie-info-popUp";
+import ErrorPopUp from "./components/error-popUp";
 
 import OptionsBar from "./components/option-bar";
 import { ReactComponent as ResetSVG } from "./assets/svg/reset.svg";
@@ -113,13 +114,14 @@ const Years = (yearsContainer, onYearClick, exitYearsList) => {
 function App() {
   const [moviesList, setMoviesList] = React.useState();
   const [listedItems, setListedItems] = React.useState();
+  const [yearsList, setYearsList] = React.useState();
 
   const [wasTopRevenue, setWaTopRevenue] = React.useState(false);
   const [wasTopRevenuePerYear, setWaTopRevenuePerYear] = React.useState(false);
   const [showYearsList, setShowYearList] = React.useState(false);
+  const [errorPopUp, setErrorPopUp] = React.useState(false);
 
   const [movieInfo, setMovieInfo] = React.useState(null);
-  const [yearsList, setYearsList] = React.useState();
 
   //Fetching movies list
   React.useEffect(() => {
@@ -130,6 +132,9 @@ function App() {
         setMoviesList(content);
         setListedItems(content);
         createYearsList(content);
+      })
+      .catch(() => {
+        setErrorPopUp(true);
       });
   }, []);
 
@@ -222,6 +227,8 @@ function App() {
       {listedItems && (
         <MoviesList moviesList={listedItems} onMovieClick={handleMovieClick} />
       )}
+
+      {errorPopUp && <ErrorPopUp />}
     </Body>
   );
 }

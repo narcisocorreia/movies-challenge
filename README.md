@@ -63,3 +63,9 @@ In this commit I created an algorithm that filters all the different years that 
 ## Create option bar component [6eaab80](https://github.com/narcisocorreia/movies-challenge/commit/6eaab8032c4fa6a9f29d1c339c809bb82f1d5081)
 
 This was a simple refactor to the code, creating the option bar component, with this App.jsx file is easer to read and more organized.
+
+## Error PopUp [523169e](https://github.com/narcisocorreia/movies-challenge/commit/523169eea071864a0e9af8e2fca8fc55086440b7)
+
+![Error PopUp](readME-assets/error-popup.png)
+
+Creating a simple popUp so that in case the API request does not work we warn Mark that unfortunately the we can see the movies list.
