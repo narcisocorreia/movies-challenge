@@ -55,3 +55,7 @@ I created a state to hold the original information received, then when the user 
 To show the list of items that where according to the options that are selected, I created a state that holds that information, and when a option is selected and the new information is created that information is always in that useState. This means that there is only list of movies "object" and the only thing need to be done is to change the value of the state that contains the information that was to be listed.
 
 I also use the same approach for the development of the division that contains the list of year that was use before for the information popUp and the list movies.
+
+## Create Years List Dynamically [020c574](https://github.com/narcisocorreia/movies-challenge/commit/020c574b7d559cd7095e8eded446ca9ae1b21f96)
+
+In this commit I created an algorithm that filters all the different years that are in the movies container, now when a user selects the option revenue per year all the years it only appears years that there is an actually movie information on the list.

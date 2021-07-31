@@ -119,17 +119,12 @@ const Year = styled.p`
   color: #536b7a;
 `;
 
-const Years = (onYearClick, exitYearsList) => {
-  const Array = [
-    2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005,
-    2004, 2003, 2002, 2001,
-  ];
-
+const Years = (yearsContainer, onYearClick, exitYearsList) => {
   return (
     <Shadow onDoubleClick={exitYearsList}>
       <YearsBG>
         <YearsTitle>Select Year</YearsTitle>
-        {Array.map((element) => {
+        {yearsContainer.map((element) => {
           return (
             <Year
               onClick={() => {
@@ -162,6 +157,7 @@ function App() {
   const [showYearsList, setShowYearList] = React.useState(false);
 
   const [movieInfo, setMovieInfo] = React.useState(null);
+  const [yearsList, setYearsList] = React.useState();
 
   //Fetching movies list
   React.useEffect(() => {
@@ -171,8 +167,18 @@ function App() {
         const { content } = data;
         setMoviesList(content);
         setListedItems(content);
+        createYearsList(content);
       });
   }, []);
+
+  const createYearsList = (data) => {
+    const years = [...new Set(data.map((item) => item.year))];
+
+    const sortedYear = years.sort((a, b) => b - a);
+    console.log(sortedYear);
+
+    setYearsList([...sortedYear]);
+  };
 
   const handleMovieClick = (movieInfo) => {
     setMovieInfo(movieInfo);
@@ -253,7 +259,8 @@ function App() {
         <MoviesList moviesList={listedItems} onMovieClick={handleMovieClick} />
       )}
 
-      {showYearsList && Years(sortYearsByTopRevenue, handleYearsListExit)}
+      {showYearsList &&
+        Years(yearsList, sortYearsByTopRevenue, handleYearsListExit)}
     </Body>
   );
 }
