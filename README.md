@@ -69,3 +69,17 @@ This was a simple refactor to the code, creating the option bar component, with 
 ![Error PopUp](readME-assets/error-popup.png)
 
 Creating a simple popUp so that in case the API request does not work we warn Mark that unfortunately the we can see the movies list.
+
+## Self Evaluation
+
+I really like this simple challenge that can be use to make a developer think and let is imagination flow.
+
+In case that this was an Client Projects our if the time to compleat the challenge was bigger the would be some thing I would do different :
+
+1. **TypeScript** -> I think that TypeScript could be very usefully no only for organization propose but to be certain that the value that are passed from component to component mach and are the type that are expected to be.
+
+2. **Redux** -> I think that using Redux could be a good option because. With Redux it would be easy to share value from component to component without the need to passed then as props. This would also mean that all the values could be found in a central file which make in my mind the code easer to understand and use.
+
+I decide to use React to complete the challenge, but I think is a very simple but compleat challenge to try to do in Angular, and with that learn Angular.
+
+I think that one of may weaker point might be the name that i give o variable and functions. I tried to make it easer to read and with the name of the variable it easy to understand the propose of the value.
