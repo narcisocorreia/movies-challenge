@@ -70,6 +70,11 @@ This was a simple refactor to the code, creating the option bar component, with 
 
 Creating a simple popUp so that in case the API request does not work we warn Mark that unfortunately the we can see the movies list.
 
+## Add search movies option [53ff4be](https://github.com/narcisocorreia/movies-challenge/commit/53ff4be0af84e234756866f40da98a63e49fdd81)
+
+In this commit I created a new feature to allow mark to search for a movie with a specific details, this being name, id, rank, revenue. To do this I simply created a function that receives a string, then I compare the stringify values of every movie with the string that the function was received. I decided to make all values sting so that all values were from the same type. Then if any of does values contains the string that was received ist pushes that element to a new array of elements.
+A improvements to this feature would be adding the options to search for actor, directs. I didn't developed that part because I decided only to make the request for that information when Mark selects a movie.
+
 ## Self Evaluation
 
 I really like this simple challenge that can be use to make a developer think and let is imagination flow.

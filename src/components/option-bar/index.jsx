@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./option-button";
+import SearchInput from "./search-input";
 
 const Body = styled.div`
   display: flex;
@@ -17,6 +18,8 @@ function OptionsBar({
   topRevenuePerYearCopy,
   topRevenuePerYearFlag,
   onTopRevenuePerYearClick,
+  onSearchInputClick,
+  resetMoviesList,
   resetButton,
 }) {
   return (
@@ -34,6 +37,11 @@ function OptionsBar({
       />
 
       {resetButton()}
+
+      <SearchInput
+        resetMoviesList={resetMoviesList}
+        onSearchInputClick={onSearchInputClick}
+      />
     </Body>
   );
 }

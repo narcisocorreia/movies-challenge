@@ -142,7 +142,6 @@ function App() {
     const years = [...new Set(data.map((item) => item.year))];
 
     const sortedYear = years.sort((a, b) => b - a);
-    console.log(sortedYear);
 
     setYearsList([...sortedYear]);
   };
@@ -153,6 +152,32 @@ function App() {
 
   const handleCloseButtonClick = () => {
     setMovieInfo(null);
+  };
+
+  const handleSearchButtonClick = (searchInput) => {
+    let moviesCopy = [...moviesList];
+    let newMoviesList = [];
+
+    moviesCopy.forEach((element) => {
+      const title = element.title !== null ? element.title.toString() : "";
+      const id = element.id !== null ? element.id.toString() : "";
+      const rank = element.rank !== null ? element.rank.toString() : "";
+      const year = element.year !== null ? element.year.toString() : "";
+      const revenue =
+        element.revenue !== null ? element.revenue.toString() : "";
+
+      if (
+        title.includes(searchInput) ||
+        id.includes(searchInput) ||
+        rank.includes(searchInput) ||
+        year.includes(searchInput) ||
+        revenue.includes(searchInput)
+      ) {
+        newMoviesList.push(element);
+      }
+    });
+
+    setListedItems((prevState) => [...newMoviesList]);
   };
 
   const handleTopRevenueClick = () => {
@@ -210,6 +235,8 @@ function App() {
           topRevenuePerYearCopy="Top 10 Revenue per Year"
           topRevenuePerYearFlag={wasTopRevenuePerYear}
           onTopRevenuePerYearClick={handleTopRevenuePerYearClick}
+          onSearchInputClick={handleSearchButtonClick}
+          resetMoviesList={resetListedItems}
           resetButton={showResetButton}
         />
       </TopBar>
